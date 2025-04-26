@@ -1,0 +1,50 @@
+node_modules
+
+# Build & cache directories
+.next
+.turbo
+dist
+build
+out/
+.cache
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# Editor directories
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Cursor files
+.cursor/
+
+# Build outputs
+apps/*/.next
+apps/*/.turbo
+apps/*/dist
+packages/*/dist
+packages/*/.turbo
+
+# Coverage reports
+coverage/
+
+# Python virtual environments
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
