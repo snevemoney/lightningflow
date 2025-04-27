@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  lnd:
+    image: lightninglabs/lnd:v0.16.4-beta
+    container_name: lightning-platform-lnd
+    restart: unless-stopped
+    volumes:
+      - ./lnd-data:/root/.lnd
+    ports:
+      - "9735:9735"     # LND P2P
+      - "10009:10009"   # LND gRPC
+      - "8080:8080"     # LND REST API
+    environment:
+      - NETWORK=testnet
+    command:
+      - "--bitcoin.active"
+      - "--bitcoin.testnet"
+      - "--bitcoin.node=neutrino"
+      - "--neutrino.connect=faucet.lightning.community"
+      - "--lnddir=/root/.lnd"
+      - "--autopilot.active"
+      - "--autopilot.private"
+      - "--autopilot.maxchannels=5"
+      - "--autopilot.allocation=0.6"
+      - "--tlsextraip=0.0.0.0"
+      - "--accept-keysend"
+      - "--rpcbind=0.0.0.0"
+      - "--rpclisten=0.0.0.0:10009"
+      - "--restlisten=0.0.0.0:8080"
+      - "--maxpendingchannels=10"
+      - "--minchansize=20000"
+      - "--protocol.wumbo-channels"
+      - "--debuglevel=info" 
