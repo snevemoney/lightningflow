@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { logoutAction } from '@/app/login/actions';
 import {
   Wallet,
   Users,
@@ -78,6 +81,7 @@ export function Sidebar() {
             <Link
               key={item.name}
               href={item.href}
+              title={item.description}
               className={cn(
                 'group flex items-center rounded-md px-3 py-2 text-sm font-medium',
                 isActive
@@ -96,6 +100,14 @@ export function Sidebar() {
           );
         })}
       </nav>
+      <form action={logoutAction} className="border-t p-3">
+        <button
+          type="submit"
+          className="w-full rounded border px-3 py-2 text-sm"
+        >
+          Sign out
+        </button>
+      </form>
     </div>
   );
-} 
+}
