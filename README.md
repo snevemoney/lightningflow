@@ -18,15 +18,9 @@ A professional Lightning Network platform for managing Bitcoin payments, wallets
 
 ```
 /apps
-  /web              → Frontend for clients (LN dashboards, QR tips)
-  /admin            → Admin dashboard for node management
-  /partner-portal   → Partner portal for liquidity providers
+  /admin            → Admin dashboard (cookie gate; fail-closed without ADMIN_ACCESS_TOKEN)
 /packages
   /lightning-core   → Lightning Network integration layer
-  /auth            → Authentication and authorization
-  /agents          → AI agents for automation
-  /ui              → Shared UI components
-/scripts           → Utility scripts
 ```
 
 ## Getting Started
@@ -36,10 +30,12 @@ A professional Lightning Network platform for managing Bitcoin payments, wallets
 pnpm install
 ```
 
-2. Set up environment variables:
+2. Set up environment variables (no sample secrets are provided):
 ```bash
-cp .env.example .env.local
+cp apps/admin/.env.example apps/admin/.env.local
 ```
+
+Set `ADMIN_ACCESS_TOKEN` to a value you generate. The admin UI denies access if it is missing or empty.
 
 3. Start development server:
 ```bash
@@ -62,4 +58,4 @@ pnpm dev
 
 ## License
 
-Private - All rights reserved 
+Private - All rights reserved

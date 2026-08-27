@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { RagSettingsForm } from './rag-settings-form';
 
 interface Agent {
   id: string;
@@ -16,7 +17,7 @@ const agents: Agent[] = [
     name: 'Client Onboarding Agent',
     type: 'onboarding',
     status: 'active',
-    lastActive: '2 minutes ago',
+    lastActive: '2026-08-27T14:52:00.000Z',
     assignedClients: 12
   },
   {
@@ -24,7 +25,7 @@ const agents: Agent[] = [
     name: 'Payout Manager',
     type: 'payout',
     status: 'active',
-    lastActive: '5 minutes ago',
+    lastActive: '2026-08-27T14:49:00.000Z',
     assignedClients: 45
   },
   {
@@ -32,7 +33,7 @@ const agents: Agent[] = [
     name: 'Analytics Bot',
     type: 'analytics',
     status: 'active',
-    lastActive: '1 hour ago',
+    lastActive: '2026-08-27T13:54:00.000Z',
     assignedClients: 30
   },
   {
@@ -40,7 +41,7 @@ const agents: Agent[] = [
     name: 'Partner Yield Bot',
     type: 'yield',
     status: 'inactive',
-    lastActive: '3 hours ago',
+    lastActive: '2026-08-27T11:54:00.000Z',
     assignedClients: 8
   }
 ];
@@ -91,7 +92,8 @@ export default function AgentsPage() {
                   {agent.type}
                 </Badge>
                 <span className="text-sm text-muted-foreground">
-                  Last active: {agent.lastActive}
+                  Last active:{' '}
+                  <time dateTime={agent.lastActive}>{agent.lastActive}</time>
                 </span>
               </div>
 
@@ -121,32 +123,8 @@ export default function AgentsPage() {
         <p className="mt-2 text-muted-foreground">
           Configure knowledge base and retrieval settings for all agents
         </p>
-        <div className="mt-4 space-y-4">
-          <div>
-            <label className="block text-sm font-medium">
-              Knowledge Base Path
-            </label>
-            <input
-              type="text"
-              className="mt-1 w-full rounded border p-2"
-              defaultValue="/data/knowledge"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium">
-              Embedding Model
-            </label>
-            <select className="mt-1 w-full rounded border p-2">
-              <option>OpenAI Ada 2</option>
-              <option>Hugging Face BERT</option>
-              <option>Custom Model</option>
-            </select>
-          </div>
-          <button className="rounded bg-primary px-4 py-2 text-primary-foreground">
-            Update RAG Settings
-          </button>
-        </div>
+        <RagSettingsForm />
       </Card>
     </div>
   );
-} 
+}
